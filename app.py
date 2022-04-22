@@ -5,13 +5,13 @@ from nltk.corpus import stopwords
 import nltk
 from nltk.stem.porter import PorterStemmer
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('stopwords')
 
 ps = PorterStemmer()
 
 
-def transform_text(text):
+def process_text(text):
     text = text.lower()
     text = nltk.word_tokenize(text)
 
@@ -46,7 +46,7 @@ input_sms = st.text_area("Enter the message")
 if st.button('Detect'):
 
     # 1. preprocess
-    transformed_sms = transform_text(input_sms)
+    transformed_sms = process_text(input_sms)
     # 2. vectorize
     vector_input = tfidf.transform([transformed_sms])
     # 3. predict
